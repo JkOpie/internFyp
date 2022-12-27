@@ -108,6 +108,7 @@ $jobtitle=$_POST['jobtitle'];
 $location=$_POST['location'];
 $city=$_POST['city'];
 $allowance = $_POST['allowance']; 
+$sector = $_POST['sector']; 
 // Formula for pagination
 $no_of_records_per_page = 5;
 $offset = ($page_no-1) * $no_of_records_per_page;
@@ -123,7 +124,7 @@ $total_no_of_pages = ceil($total_rows / $no_of_records_per_page);
   $second_last = $total_no_of_pages - 1; // total page minus 1
   $vid=$_GET['viewid'];
 
-  $sql="SELECT tbljobs.*,tblemployers.CompnayLogo,tblemployers.CompnayName from tbljobs join tblemployers on tblemployers.id=tbljobs.employerId order by tbljobs.salaryPackage desc";
+  $sql="SELECT tbljobs.*,tblemployers.CompnayLogo,tblemployers.CompnayName from tbljobs join tblemployers on tblemployers.id=tbljobs.employerId ";
 
 
   if($_POST['jobtitle'] != ''){
@@ -131,7 +132,7 @@ $total_no_of_pages = ceil($total_rows / $no_of_records_per_page);
   }
 
   if($_POST['location'] != ''){
-    if(!str_contains($sql, 'where')){
+    if(!strpos($sql, 'where') !== false ){
       $sql = $sql." where tbljobs.jobLocation='".$location."'";
     }else{
       $sql= $sql." and tbljobs.jobLocation='".$location."'";
@@ -139,7 +140,7 @@ $total_no_of_pages = ceil($total_rows / $no_of_records_per_page);
   }
 
   if($_POST['city'] != ''){
-    if(!str_contains($sql, 'where')){
+    if(!strpos($sql, 'where') !== false ){
       $sql = $sql." where tbljobs.city='".$city."'";
     }else{
       $sql = $sql." and tbljobs.city='".$city."'";
@@ -147,23 +148,26 @@ $total_no_of_pages = ceil($total_rows / $no_of_records_per_page);
   }
 
   if($_POST['allowance'] != ''){
-    if(!str_contains($sql, 'where')){
+    if(!strpos($sql, 'where') !== false ){
       $sql = $ql." where tbljobs.allowance_provide='".$allowance."'";
     }else{
       $sql = $sql." and tbljobs.allowance_provide='".$allowance."'";
     }
   }
+ 
 
   if($_POST['sector'] != ''){
-    if(!str_contains($sql, 'where')){
-      $sql = $ql." where tbljobs.sector='".$allowance."'";
+   
+    if(!strpos($sql, 'where') !== false ){
+      $sql = $sql." where tbljobs.sector='".$sector."'"; 
     }else{
-      $sql = $sql." and tbljobs.sector='".$allowance."'";
+      $sql = $sql." and tbljobs.sector='".$sector."'";
     }
+   
   }
 
-  var_dump($sql);
-  
+
+  $sql.' order by tbljobs.salaryPackage desc';
 
 $query = $dbh->query($sql);
 
