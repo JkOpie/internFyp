@@ -166,7 +166,7 @@ foreach($results as $row)
 
                   <p><?php  echo htmlentities($row->CompnayName);?> <em><a href="index.php">(View All Internship)</a></em></p>
 
-                  <a href="#" class="text"><i class="fa fa-map-marker"></i><?php  echo htmlentities($row->jobLocation);?></a> <a href="#" class="text"><i class="fa fa-calendar"></i><?php  echo htmlentities($row->postinDate);?> </a> <strong class="price"><i class="fa fa-money"></i>RM<?php  echo htmlentities($row->salaryPackage);?></strong>
+                  <a href="#" class="text"><i class="fa fa-map-marker"></i><?php  echo htmlentities($row->jobLocation.','.$row->city);?></a> <a href="#" class="text"><i class="fa fa-calendar"></i><?php  echo htmlentities($row->postinDate);?> </a> <strong class="price"><i class="fa fa-money"></i>RM<?php  echo htmlentities($row->salaryPackage);?></strong>
 
                   <div class="clearfix"> <a href="#" class="btn-freelance"><?php  echo htmlentities($row->jobType);?></a> 
                     <?php if($_SESSION['jsid']==""){?>
@@ -195,6 +195,9 @@ foreach($results as $row)
 <h4>Job Location</h4>
 
                   <p> <?php  echo ($row->jobLocation);?></p>
+                  <h4>Job City</h4>
+
+                  <p> <?php  echo ($row->city);?></p>
                   <h4>Salary Package</h4>
 
                   <p>RM<?php  echo ($row->salaryPackage);?></p>

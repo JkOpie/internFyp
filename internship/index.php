@@ -232,7 +232,7 @@ include('includes/config.php');
                           <div class="text-col">
                             <h4><a href="jobs-details.php?jid=<?php echo ($row->jobId); ?>"><?php echo htmlentities($row->jobTitle); ?></a></h4>
                             <p><?php echo htmlentities($row->CompnayName); ?></p>
-                            <a href="jobs-details.php?jid=<?php echo ($row->jobId); ?>" class="text"><i class="fa fa-map-marker"></i><?php echo htmlentities($row->jobLocation); ?></a> <a href="#" class="text"><i class="fa fa-calendar"></i><?php echo htmlentities($row->postinDate); ?> </a>
+                            <a href="jobs-details.php?jid=<?php echo ($row->jobId); ?>" class="text"><i class="fa fa-map-marker"></i><?php echo htmlentities($row->jobLocation.','.$row->city); ?></a> <a href="#" class="text"><i class="fa fa-calendar"></i><?php echo htmlentities($row->postinDate); ?> </a>
                           </div>
 
                           <?php if($row->salaryPackage){

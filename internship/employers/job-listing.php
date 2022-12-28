@@ -160,7 +160,7 @@ foreach($results as $result)
 <!-- Job Location --> 
 <a href="job-details.php?jobid=<?php echo htmlentities($result->jobId);?>" class="text" title='View Details'><i class="fa fa-map-marker"></i>
 
-  <?php echo htmlentities($result->jobLocation);?></a> 
+  <?php echo htmlentities($result->jobLocation.','.$result->city);?></a> 
 
 <!-- Job Posting date --> 
 <a href="job-details.php?jobid=<?php echo htmlentities($result->jobId);?>" class="text" title='View Details'><i class="fa fa-calendar"></i>
